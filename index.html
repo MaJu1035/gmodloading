@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <img id="image" src="blank_light.jpg" style="width:100%">
+    <p></p>
+    <button class="change-image">Change Lights</button>
+    <script>
+      var imageSources = ["lade1.jpg", "lade2.jpg", "lade3.jpg", "lade4.jpg"]
+      var buttons = document.getElementsByClassName("change-image")[0];
+      var index = 0;
+
+      buttons.addEventListener('click', function() {
+        if (index === imageSources.length) {
+          index = 0;
+        }
+        document.getElementById("image").src = imageSources[index];
+        index++;
+      });
+
+    </script>
+  </body>
+</html>
