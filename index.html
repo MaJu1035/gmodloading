@@ -4,30 +4,48 @@
    <head>
       <title>change picture</title>
       <script type = "text/javascript">
-          function displayNextImage() {
-              x = (x === images.length - 1) ? 0 : x + 1;
-              document.getElementById("img").src = images[x];
-          }
+          $("#slideshow > div:gt(0)").hide();
 
-          function displayPreviousImage() {
-              x = (x <= 0) ? images.length - 1 : x - 1;
-              document.getElementById("img").src = images[x];
-          }
-
-          function startTimer() {
-              setInterval(displayNextImage, 3000);
-          }
-
-          var images = [], x = -1;
-          images[0] = "lade1.png";
-          images[1] = "lade2.png";
-          images[2] = "lade3.png";
+          setInterval(function() { 
+          $('#slideshow > div:first')
+         .fadeOut(1000)
+         .next()
+         .fadeIn(1000)
+         .end()
+         .appendTo('#slideshow');
+         },  3000); 
       </script>
+      <style>
+      #slideshow { 
+      margin: 50px auto; 
+      position: relative; 
+    width: 240px; 
+    height: 240px; 
+    padding: 10px; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.4); 
+}
+
+#slideshow > div { 
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    right: 10px; 
+    bottom: 10px; 
+}
+      </style>
    </head>
 
-   <body onload = "startTimer()">
-       <img id="img" src="startpicture.jpg"/>
-       <button type="button" onclick="displayPreviousImage()">Previous</button>
-       <button type="button" onclick="displayNextImage()">Next</button>
+   <body>
+<div id="slideshow">
+   <div>
+     <img src="lade1.png">
+   </div>
+   <div>
+     <img src="lade2.png">
+   </div>
+   <div>
+     <img src="lade3.png">
+   </div>
+</div>
    </body>
 </html>
